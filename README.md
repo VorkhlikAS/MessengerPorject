@@ -3,5 +3,5 @@ PAPS project
 
 
 
-![](https://raw.githubusercontent.com/VorkhlikAS/MessengerProject/tree/main/MessengerPAPS/_EG/OkayegiEG.png)
+![](https://raw.githubusercontent.com/VorkhlikAS/MessengerProject/main/MessengerPAPS/_EG/OkayegiEG.png)
 
