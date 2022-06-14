@@ -8,105 +8,105 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MessengerNetSix
 build_property.RootNamespace = MessengerNetSix
-build_property.ProjectDir = D:\VisualStudioProjects\MessengerNetSix\
+build_property.ProjectDir = C:\Users\Максим\source\repos\!Unity\MessengerPorject\MessengerNetSix\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\VisualStudioProjects\MessengerNetSix
+build_property.MSBuildProjectDirectory = C:\Users\Максим\source\repos\!Unity\MessengerPorject\MessengerNetSix
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Shared/Chat.razor]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Shared/Chat.razor]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENoYXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Shared/Counter.razor]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Shared/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvdW50ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/_Imports.razor]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Account/Login.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Account/Register.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Chat/Index.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Chat/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/ContactsAndChats/Index.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/ContactsAndChats/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNBbmRDaGF0c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Contacts/Create.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Contacts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Contacts/Delete.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Contacts/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Contacts/Details.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Contacts/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Contacts/Edit.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Contacts/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Contacts/Index.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Contacts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Home/Index.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Home/Privacy.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Shared/Error.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Shared/_Layout.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Users/ChangePassword.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Users/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Users/Create.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Users/Edit.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Users/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/Users/Index.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/_ViewImports.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/VisualStudioProjects/MessengerNetSix/Views/_ViewStart.cshtml]
+[C:/Users/Максим/source/repos/\!Unity/MessengerPorject/MessengerNetSix/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
