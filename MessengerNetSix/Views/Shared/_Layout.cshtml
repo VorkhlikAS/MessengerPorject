@@ -1,21 +1,19 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MessengerPAPS</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <!--Blazor--></>
-    @*<base href="~/" />
+    <base href="~/" />
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
-    <script src="_framework/blazor.server.js"></script>*@
-
-     <!-- DARK THEME -->
+    <script src="_framework/blazor.server.js"></script>
+	
+	<!-- DARK THEME -->
     <script
     nomodule>window.MSInputMethodContext && document.documentMode && document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-ie11@5/css/bootstrap-ie11.min.css"><script src="https://cdn.jsdelivr.net/npm/ie11-custom-properties@4/ie11CustomProperties.min.js"><\/script>');</script>
     <link rel="stylesheet" href="~/dark_theme/dark-mode.css">
@@ -23,7 +21,8 @@
 
 
 <body>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom mb-3">
+    <header>
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Строчить не вредно</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -40,11 +39,26 @@
                         </li>
                         <partial name="_LoginPartial" />
 
+
+                        @*@if(User.Identity.IsAuthenticated)
+{
+    <p>@User.Identity.Name</p>
+ 
+    <form method="post" asp-controller="Account" asp-action="Logout">
+        <input type="submit" value="Выход" />
+    </form>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login">Вход</a>
+    <a asp-controller="Account" asp-action="Register">Регистрация</a>
+}*@
+
+
                     </ul>
                 </div>
-            <!-- DARK -->
-
-      <nav class="nav justify-content-center float-md-end">
+      <!-- DARK -->
+	 <nav class="nav justify-content-center float-md-end">
           <div class="form-check form-switch">
             <input type="checkbox" class="form-check-input" id="darkSwitch">
             <label class="custom-control-label" for="darkSwitch">Темная тема</label>
@@ -52,8 +66,9 @@
           <script src="~/dark_theme/dark-mode-switch.min.js"></script>
       </nav>
 
-
+            </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">

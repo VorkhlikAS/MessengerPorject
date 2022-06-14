@@ -9851,23 +9851,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Александр\\.nuget\\packages\\": {},
+    "C:\\Users\\Максим\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\VisualStudioProjects\\MessengerNetSix\\MessengerNetSix.csproj",
+      "projectUniqueName": "C:\\Users\\Максим\\source\\repos\\!Unity\\MessengerPorject\\MessengerNetSix\\MessengerNetSix.csproj",
       "projectName": "MessengerNetSix",
-      "projectPath": "D:\\VisualStudioProjects\\MessengerNetSix\\MessengerNetSix.csproj",
-      "packagesPath": "C:\\Users\\Александр\\.nuget\\packages\\",
-      "outputPath": "D:\\VisualStudioProjects\\MessengerNetSix\\obj\\",
+      "projectPath": "C:\\Users\\Максим\\source\\repos\\!Unity\\MessengerPorject\\MessengerNetSix\\MessengerNetSix.csproj",
+      "packagesPath": "C:\\Users\\Максим\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Максим\\source\\repos\\!Unity\\MessengerPorject\\MessengerNetSix\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Александр\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Максим\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9934,7 +9934,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
