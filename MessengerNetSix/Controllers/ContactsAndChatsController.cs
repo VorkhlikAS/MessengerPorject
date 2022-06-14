@@ -22,16 +22,14 @@ namespace MessengerNetSix.Controllers
             _contacts = contacts;
         }
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            //ViewBag.Contacts = _context.Contacts.Where(p => p.Forbiden == false).ToList();
-
-            ViewBag.Contacts = _contacts.GetUserContacts();
-            ViewBag.NotConfirmedContacts = _contacts.GetNonConfirmedContacts();
+            var user = await _userManager.GetUserAsync(User);
+            ViewBag.Contacts = _contacts.GetUserContacts(user.Id);
+            ViewBag.NotConfirmedContacts = _contacts.GetNonConfirmedContacts(user.Id.ToString());
 
             return View(_userManager.Users.ToList());
         }
-        //public IActionResult Index() => View(_userManager.Users.ToList());
         
         public async Task<ActionResult> AddToContacts(string id)
         {
@@ -40,20 +38,6 @@ namespace MessengerNetSix.Controllers
                 var user = await _userManager.GetUserAsync(User);
                 var userId = user.Id;
                 Contact contact = new Contact { SenderId = User.FindFirstValue(ClaimTypes.NameIdentifier), RecieverId = id };
-
-
-                //bool ok = true;
-                /*var all = _context.contacts;
-                foreach (var item in all)
-                {
-                    if ((item.FirstId == userId && item.SecondId == Id) || (item.FirstId == Id && item.SecondId == userId))
-                    {
-                        ok = false;
-                        break;
-                    }
-                }*/
-
-                //var contacts = _context.Contact.ToList();
                 _context.Add(contact);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

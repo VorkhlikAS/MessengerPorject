@@ -13,24 +13,36 @@
     
     @foreach (var user in Model)
     {
-        bool ok = false;
-        foreach (var contact in ViewBag.NotConfirmedContacts)
-        {
-            if (user.Id == contact.SenderId || user.Id == contact.RecieverId)
-                ok = true;
-        }
-        if(ok && user.UserName != User.Identity.Name)
-        {
-            <tr>
-            <td>@user.Email</td>
-            <td>@user.Phone</td>
-            <td>
-                <a class="btn btn-sm btn-primary" asp-action="Accept" asp-route-id="@user.Id">Принять заявку</a>
-            </td>
-        </tr>
-        }
+            if (user.UserName != User.Identity.Name)
+            {
+                foreach (var contact in ViewBag.NotConfirmedContacts)
+                {
+                    if(contact.SenderId == User.Identity.Name && contact.RecieverId != User.Identity.Name)
+                    {
+                        <tr>
+                        <td>@user.Email</td>
+                        <td>@user.Phone</td>
+                        <td>
+                        <a class="btn btn-sm btn-primary" asp-action="Accept" asp-route-id="@user.Id">Принять заявку</a>
+                        </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                        <td>@user.Email</td>
+                        <td>@user.Phone</td>
+                        <td>
+                        <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@user.Id">Отменить заявку</a>
+                        </td>
+                        </tr>
+                    }
+                }
+             }   
+            
+        
     }
-</table>
+    </table>
 }
 <table class="table">
     <h2>Контакты</h2>
@@ -41,7 +53,7 @@
         bool ok = false;
         foreach (var contact in ViewBag.Contacts)
         {
-            if (user.Id == contact.SenderId || user.Id == contact.RecieverId)
+            if ((user.Id == contact.SenderId || user.Id == contact.RecieverId) && (contact.IsConfirmed))
                 ok = true;
         }
         if(ok && user.UserName != User.Identity.Name)

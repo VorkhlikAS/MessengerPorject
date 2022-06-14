@@ -2,12 +2,13 @@
 
 namespace MessengerNetSix.Models
 {
-    public class ChatList
+    public class ChatMember
     {
         [Required]
         public int Id { get; set; }
         [Required]
-        public int Name { get; set; }
-        public bool IsAGroup { get; set; }
+        public string UserId { get; set; }
+        [Required]
+        public int ChatId { get; set; }
     }
 }

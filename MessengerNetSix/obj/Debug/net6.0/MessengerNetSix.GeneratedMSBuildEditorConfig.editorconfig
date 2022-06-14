@@ -15,12 +15,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\VisualStudioProjects\MessengerNetSix
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/VisualStudioProjects/MessengerNetSix/Views/Shared/Chat.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENoYXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VisualStudioProjects/MessengerNetSix/Views/Shared/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvdW50ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VisualStudioProjects/MessengerNetSix/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/VisualStudioProjects/MessengerNetSix/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/VisualStudioProjects/MessengerNetSix/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VisualStudioProjects/MessengerNetSix/Views/Chat/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/VisualStudioProjects/MessengerNetSix/Views/ContactsAndChats/Index.cshtml]

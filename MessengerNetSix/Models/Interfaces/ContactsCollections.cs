@@ -12,9 +12,9 @@ namespace MessengerNetSix.Models.Interfaces
          
         }
 
-        public IEnumerable<Contact> GetNonConfirmedContacts() => _context.Contacts.Where(c => !c.IsConfirmed && !c.Forbiden).ToList();
+        public IEnumerable<Contact> GetNonConfirmedContacts(string id) => _context.Contacts.Where(c => (!c.IsConfirmed && !c.Forbiden) && (c.SenderId == id ||c.RecieverId == id)).ToList();
 
-        public IEnumerable<Contact> GetUserContacts() => _context.Contacts.Where(p => p.Forbiden == false).ToList();
+        public IEnumerable<Contact> GetUserContacts(string id) => _context.Contacts.Where(p => (p.Forbiden == false) && (p.SenderId == id || p.RecieverId == id)).ToList();
 
     }
 }

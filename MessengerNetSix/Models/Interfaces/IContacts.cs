@@ -4,7 +4,7 @@ namespace MessengerNetSix.Models.Interfaces
 {
     public interface IContacts
     {
-        IEnumerable<Contact> GetUserContacts();
-        IEnumerable<Contact> GetNonConfirmedContacts();
+        IEnumerable<Contact> GetUserContacts(string id);
+        IEnumerable<Contact> GetNonConfirmedContacts(string id);
     }
 }

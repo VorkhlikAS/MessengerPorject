@@ -1,3 +1,4 @@
+using MessengerNetSix.Hubs;
 using MessengerNetSix.Models;
 using MessengerNetSix.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -48,5 +49,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapBlazorHub();
+app.MapHub<MessengerHub>("/messengerhub");
 app.Run();
