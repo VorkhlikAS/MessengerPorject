@@ -10,5 +10,6 @@ namespace MessengerNetSix.Models
         public string UserId { get; set; }
         [Required]
         public int ChatId { get; set; }
+        public string ChatName { get; set; }
     }
 }

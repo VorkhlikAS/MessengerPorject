@@ -1,10 +1,21 @@
-﻿@model IEnumerable<MessengerNetSix.Models.User>
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<MessengerNetSix.Models.User>
 @{
     ViewBag.Title = "Список пользователей";
 }
  
 @*<a asp-action="Create">Добавить пользователя</a>*@
- 
+ @inject UserManager<User> UserManager
+
+    @{
+        var Userr = await UserManager.GetUserAsync(User);
+        var userid = 0.ToString();
+
+        if (Userr != null)
+        {
+            userid = Userr.Id;
+        }
+    }
 @if (ViewBag.NotConfirmedContacts.Count > 0)
 {
     <table class="table">
@@ -17,7 +28,7 @@
             {
                 foreach (var contact in ViewBag.NotConfirmedContacts)
                 {
-                    if(contact.SenderId == User.Identity.Name && contact.RecieverId != User.Identity.Name)
+                    if(contact.SenderId == user.Id && contact.RecieverId == userid)
                     {
                         <tr>
                         <td>@user.Email</td>
@@ -27,7 +38,7 @@
                         </td>
                         </tr>
                     }
-                    else
+                    else if (contact.SenderId == userid && contact.RecieverId == user.Id)
                     {
                         <tr>
                         <td>@user.Email</td>
@@ -62,7 +73,10 @@
             <td>@user.Email</td>
             <td>@user.Phone</td>
             <td>
-                <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@user.Id">Удалить из контактов</a>
+                <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@user.Id" asp-route-name="@user.UserName">Удалить из контактов</a>
+
+                <a class="btn btn-sm btn-primary" asp-controller="Chat" asp-action="CreateDialogue" asp-route-id="@user.Id" asp-route-name="@user.UserName" >Перейти к чату</a>
+                <input type="button" class="btn btn-sm btn-primary" value="Перейти к чату" onclick="location.href='@Url.Action("CreateDialogue", "Chat")'" />
             </td>
         </tr>
         }

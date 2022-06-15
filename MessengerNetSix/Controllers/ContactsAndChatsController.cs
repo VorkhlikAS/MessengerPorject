@@ -24,18 +24,14 @@ namespace MessengerNetSix.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string? searchId)
         {
+            var user = await _userManager.GetUserAsync(User);
+            ViewBag.Contacts = _contacts.GetUserContacts(user.Id);
+            ViewBag.NotConfirmedContacts = _contacts.GetNonConfirmedContacts(user.Id.ToString());
             if (searchId == null) { 
-                var user = await _userManager.GetUserAsync(User);
-                ViewBag.Contacts = _contacts.GetUserContacts(user.Id);
-                ViewBag.NotConfirmedContacts = _contacts.GetNonConfirmedContacts(user.Id.ToString());
                 ViewBag.SearchResult = null;
-
             }
             else
             {
-                var user = await _userManager.GetUserAsync(User);
-                ViewBag.Contacts = _contacts.GetUserContacts(user.Id);
-                ViewBag.NotConfirmedContacts = _contacts.GetNonConfirmedContacts(user.Id.ToString());
                 ViewBag.SearchResult = _userManager.Users.Where(c => (c.UserName.Contains(searchId)) && (c.Id != user.Id)).ToList();
             }
             return View(_userManager.Users.ToList());
