@@ -3,7 +3,7 @@
     ViewBag.Title = "Список пользователей";
 }
  
-<a asp-action="Create">Добавить пользователя</a>
+@*<a asp-action="Create">Добавить пользователя</a>*@
  
 @if (ViewBag.NotConfirmedContacts.Count > 0)
 {
@@ -68,12 +68,20 @@
         }
     }
 </table>
+<form method="get" asp-controller="ContactsAndChats" asp-action="Index">
+    <div>
+        <input type="text" name="searchId">
+        <input type="submit" value="Найти пользователя"/> 
+    </div>
+</form>
 <table class="table">
     <h2>Пользователи</h2>
     <tr><th>Email</th><th>Год</th><th></th></tr>
     
-    @foreach (var user in Model)
+    @if (ViewBag.SearchResult != null)
     {
+        foreach (var user in ViewBag.SearchResult)
+        {
         bool ok = false;
         foreach (var contact in ViewBag.Contacts)
         {
@@ -90,5 +98,7 @@
             </td>
         </tr>
         }
+        }
     }
+    
 </table>

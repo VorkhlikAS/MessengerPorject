@@ -22,13 +22,30 @@ namespace MessengerNetSix.Controllers
             _contacts = contacts;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? searchId)
+        {
+            if (searchId == null) { 
+                var user = await _userManager.GetUserAsync(User);
+                ViewBag.Contacts = _contacts.GetUserContacts(user.Id);
+                ViewBag.NotConfirmedContacts = _contacts.GetNonConfirmedContacts(user.Id.ToString());
+                ViewBag.SearchResult = null;
+
+            }
+            else
+            {
+                var user = await _userManager.GetUserAsync(User);
+                ViewBag.Contacts = _contacts.GetUserContacts(user.Id);
+                ViewBag.NotConfirmedContacts = _contacts.GetNonConfirmedContacts(user.Id.ToString());
+                ViewBag.SearchResult = _userManager.Users.Where(c => (c.UserName.Contains(searchId)) && (c.Id != user.Id)).ToList();
+            }
+            return View(_userManager.Users.ToList());
+
+        }
+        [HttpGet]
+        public async Task<ActionResult> GetUsers(string userId)
         {
             var user = await _userManager.GetUserAsync(User);
-            ViewBag.Contacts = _contacts.GetUserContacts(user.Id);
-            ViewBag.NotConfirmedContacts = _contacts.GetNonConfirmedContacts(user.Id.ToString());
-
-            return View(_userManager.Users.ToList());
+            return PartialView(_userManager.Users.Where(c => (c.Id.Contains(userId)) && (c.Id != user.Id)).ToList());
         }
         
         public async Task<ActionResult> AddToContacts(string id)
