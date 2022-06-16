@@ -1,0 +1,16 @@
+﻿@model MessengerNetSix.Models.ChatList;
+@{
+    ViewBag.Title = "Добавление группы";
+}
+
+<form method="post" asp-controller="Chat" asp-action="CreateChat">
+    <div>
+        <label value="Название группы"><</label>
+        <input type="text" name="name">
+        
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary" value="Создать группу"/> 
+    </div>
+    
+</form>

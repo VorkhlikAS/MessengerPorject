@@ -41,9 +41,12 @@ namespace MessengerNetSix.Controllers
                     
             if (ok)
             {
+                var chat = _context.ChatList.Where(m => m.Id.ToString() == id).First();
                 ViewBag.ChatId = id;
                 ViewBag.ChatName = name;
                 ViewBag.messages = _messages.GetChatMessages(id);
+                if (chat.IsAGroup)
+                    ViewBag.Key = chat.Key;
                 return View(members);
             }
             else return RedirectToAction("Error");
@@ -75,10 +78,20 @@ namespace MessengerNetSix.Controllers
             }
             return RedirectToAction("Error");
         }
-        //WIP
-        public async Task<ActionResult> CreateChat()
+        
+        public IActionResult CreateChat() => View();
+        [HttpPost]
+        public async Task<ActionResult> CreateChat(string name)
         {
-            return View();
+            var key = Guid.NewGuid().ToString();
+            ChatList newChat = new ChatList { Name = name, IsAGroup = true, Key=key};
+            _context.Add(newChat);
+            _context.SaveChanges();
+            var user = await _userManager.GetUserAsync(User);
+            ChatMember chatMember = new ChatMember { ChatId = newChat.Id, ChatName=name, UserId = user.Id};
+            _context.Add(chatMember);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

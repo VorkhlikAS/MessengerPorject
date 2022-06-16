@@ -4,33 +4,20 @@
 @inject NavigationManager NavigationManager
 @implements IAsyncDisposable
 
-<h1>@DisplayName</h1>
+<h1>@DisplayName</h1
+@if (Key != null)
+{
+    <h2>$Key: @Key</h2>
+}
+
 <hr />
-<div >
-<ul id="messagesList">
+<div>
+    
     <table id="round">
         <tr><th></th><th></th></tr>
-    @{int i = 0;}
     @foreach (var message in messages)
     {
-                i++;
-                if (i == messages.Count())
-                {
-                    if (message.SenderId == Sender)
-            {
-                <tr><td></td><td></td><td rowspan="2" class="new-message" style="background-color: #dbdbe1; color: #3b3b3f">@message.Content <br>@message.PostingDate</td></tr>
-                <tr><td></td><td></td></tr><div class="pointer-right"></div>
-                
-            }
-            else
-            {
-                <tr><td rowspan="2" class="new-message" style="background-color: #7c7fc1; color: #f2f2f5">@message.SenderId: @message.Content <br>@message.PostingDate</td><td></td><td></td></tr>
-                <tr><td></td><td></td></tr><div class="pointer-left"></div>
-            }
-                }
-                else
-                {
-                    if (message.SenderId == Sender)
+            if (message.SenderId == Sender)
             {
                 <tr><td></td><td></td><td rowspan="2" style="background-color: #dbdbe1; color: #3b3b3f">@message.Content <br>@message.PostingDate</td></tr>
                 <tr><td></td><td></td></tr><div class="pointer-right"></div>
@@ -41,12 +28,10 @@
                 <tr><td rowspan="2" style="background-color: #7c7fc1; color: #f2f2f5">@message.SenderId: @message.Content <br>@message.PostingDate</td><td></td><td></td></tr>
                 <tr><td></td><td></td></tr><div class="pointer-left"></div>
             }
-                }
-                
             @*<li>@message</li>*@
     }
     </table>
-</ul>
+    
 </div>
 <hr>
 <div class="form-group">
@@ -70,6 +55,8 @@
     public string DisplayName { get; set; }
     [Parameter]
     public List<Message> messages { get; set; }
+    [Parameter]
+    public string Key { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -112,29 +99,30 @@
     }
 }
 <style>
-  #test {
-    width:100%;
-    height:100%;
-  }
   table {
+    display: block;
     margin: 0 auto; /* or margin: 0 auto 0 auto */
     width: 80%;
+    max-height: 630px; 
     border-spacing: 10px;
     border-collapse: separate;
+    overflow: auto;
   }
   td {
-      /*display: inline-block; /* this has been added */
-      border-radius: 10px;
-      max-width: 40px;
-      padding: 10px;
+    /*display: inline-block; /* this has been added */
+    border-radius: 10px;
+    max-width: 400px;
+    min-width: 315px;
+    padding: 10px;
   }
   #round {
-        background-color: #202029;
-        border: 1px solid #000;
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
+    background-color: #202029;
+    border: 1px solid #000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
   }
+  
   .pointer-left {
     background-color: #7c7fc1;
 	height: 20px;
@@ -144,7 +132,7 @@
 	border-radius: 0 0 12px 0;
 	margin-top: -20px;
 	position: relative;
-	left: calc(0.5vw - 150px);
+	left: calc(0.5vw - 450px);
     }
    .pointer-right {
     background-color: #dbdbe1;
@@ -155,7 +143,7 @@
 	border-radius: 0 0 12px 0;
 	margin-top: -20px;
 	position: relative;
-	left: calc(0.5vw + 725px);
+	left: calc(0.5vw + 425px);
     }
     
 </style>

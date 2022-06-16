@@ -6,7 +6,8 @@ namespace MessengerNetSix.Models
     {
         [Required]
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
+        public string Key { get; set; }
         [Required]
         public bool IsAGroup { get; set; }
     }

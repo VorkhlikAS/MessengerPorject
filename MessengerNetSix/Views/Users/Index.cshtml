@@ -1,12 +1,11 @@
 ﻿@model MessengerNetSix.Models.User
 @{
-    ViewBag.Title = "Список пользователей";
+    ViewBag.Title = "Пользователь";
 }
+@*<a asp-action="Create">Добавить пользователя</a>*@
  
-<a asp-action="Create">Добавить пользователя</a>
- 
-<table class="table">
-    <tr><th>Email</th><th>Год</th><th></th></tr>
+<table id="round">
+    <tr><th>Email</th><th>Телефон</th><th></th><th></th></tr>
         <tr>
             <td>@Model.Email</td>
             <td>@Model.Phone</td>
@@ -14,11 +13,32 @@
                 <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
                     <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Изменить</a>
                     <a class="btn btn-sm btn-primary" asp-action="ChangePassword" asp-route-id="@Model.Id">Сменить пароль</a>
-                    <button type="submit" class="btn btn-sm btn-danger">
+                    @*<button type="submit" class="btn btn-sm btn-danger">
                         Удалить
-                    </button>
+                    </button>*@
                 </form>
             </td>
         </tr>
-    }
 </table>
+<style>
+    table {
+    margin: 0 auto; /* or margin: 0 auto 0 auto */
+    width: 80%;
+    border-spacing: 10px;
+    border-collapse: separate;
+    color: #f2f2f5;
+    }
+    #round  {
+    background-color: #202029;
+    border: 1px solid #000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    }
+    td {
+    /*display: inline-block; /* this has been added */
+    border-radius: 10px;
+    max-width: 40px;
+    padding: 10px;
+    }
+</style>

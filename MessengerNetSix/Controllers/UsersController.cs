@@ -16,7 +16,11 @@ namespace MessengerNetSix.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index() => View(_userManager.GetUserAsync(User));
+        public async Task<IActionResult> Index()
+        {
+            User user = await _userManager.GetUserAsync(User);
+            return View(user);
+        }
 
         public IActionResult Create() => View();
 

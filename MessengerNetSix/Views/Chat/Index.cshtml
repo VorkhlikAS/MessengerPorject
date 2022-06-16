@@ -3,7 +3,19 @@
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-
+<a class="btn btn-sm btn-primary" asp-action="CreateChat">Создать новый чат</a>
+<form method="post" asp-controller="ContactsAndChats" asp-action="Index">
+    <div>
+        <label value="$Key"><</label>
+        <input type="text" name="name">
+        
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary" value="Присоединиться по ключу"/> 
+    </div>
+    
+</form>
+<hr />
 <table class="table">
     <h2>Мои беседы</h2>
     <tr><th>Название</th><th></th></tr>

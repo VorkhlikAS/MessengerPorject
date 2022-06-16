@@ -6,5 +6,21 @@
 
 @*<component type="typeof(Counter)" render-mode="ServerPrerendered" />*@
 @*<component type="typeof(Chat)" render-mode="ServerPrerendered" reciever="Bonga"/>*@
-@(await Html.RenderComponentAsync<Chat>(RenderMode.ServerPrerendered, new { Sender=User.Identity.Name, Connection=ViewBag.ChatId, DisplayName=ViewBag.ChatName, messages=ViewBag.messages}))
+@{
+    if (ViewBag.Key!=null){
+@(await Html.RenderComponentAsync<Chat>(RenderMode.ServerPrerendered, new { Sender=User.Identity.Name, Connection=ViewBag.ChatId, DisplayName=ViewBag.ChatName, messages=ViewBag.messages, Key = ViewBag.Key}))
+}
+else{
+    @(await Html.RenderComponentAsync<Chat>(RenderMode.ServerPrerendered, new { Sender=User.Identity.Name, Connection=ViewBag.ChatId, DisplayName=ViewBag.ChatName, messages=ViewBag.messages}))
 
+}
+}
+
+<script type="text/javascript">
+ /* window.onload=function(){
+    setTimeout(5000);
+    var block = document.getElementById("round");
+    block.scrollTop = 9999;
+  }*/
+  //round.scrollTop = round.scrollHeight;
+</script>
