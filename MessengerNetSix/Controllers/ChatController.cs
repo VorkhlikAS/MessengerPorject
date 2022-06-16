@@ -1,4 +1,5 @@
 ﻿using MessengerNetSix.Models;
+using MessengerNetSix.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -9,24 +10,42 @@ namespace MessengerNetSix.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly ApplicationContext _context;
+        private readonly IChatMember _members;
 
-        public ChatController(UserManager<User> userManager, ApplicationContext context)
+        public ChatController(UserManager<User> userManager, ApplicationContext context, IChatMember members)
         {
             _userManager = userManager;
             _context = context;
+            _members = members;
         }
-        public IActionResult Index(string id)
+        public async Task<IActionResult> Index()
         {
-            ViewBag.Chats = _context.ChatList.Where(ChatList => ChatList.Id.ToString() == id).ToList();
-            return View(_userManager.Users.ToList());
+            var user = await _userManager.GetUserAsync(User);
+            return View(_context.ChatMembers.Where(m => m.UserId == user.Id).ToList());
         }
-        public async Task<ActionResult> CreateDialogue(string id, string name)
+        public async Task<ActionResult> Chat(string id)
+        {
+            var members = _members.GetMembers(id);
+            var user = await _userManager.GetUserAsync(User);
+            bool ok = false;
+            foreach (var member in members)
+                if (member.UserId == user.Id.ToString())
+                    ok = true;
+            if (ok)
+            {
+                ViewBag.ChatId = id;
+                return View(members);
+            }
+            else return RedirectToAction("Error");
+        }
+        public async Task<IActionResult> CreateDialogue(string id, string name)
         {
             if (ModelState.IsValid)
             {
-                if (true)
+                var user = await _userManager.GetUserAsync(User);
+                string chatId = null;
+                if (_context.ChatMembers.Where(p => (p.ChatName == name)&&(p.UserId == user.Id)) == null)
                 {
-                    var user = await _userManager.GetUserAsync(User);
                     ChatList chatList = new ChatList { IsAGroup = false };
                     _context.Add(chatList);
                     await _context.SaveChangesAsync();
@@ -35,26 +54,21 @@ namespace MessengerNetSix.Controllers
                     _context.Add(firstMember);
                     _context.Add(secondMember);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    chatId = chatList.Id.ToString();
                 }
-                
-
+                else
+                {
+                    var temp = _context.ChatMembers.Where(p => (p.ChatName == name) && (p.UserId == user.Id)).First();
+                    chatId = temp.ChatId.ToString();
+                }
+                return RedirectToAction("Chat", new { id = chatId });
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Error");
         }
-        /*public Task<ActionResult> CreateDiologue(string id)
+        //WIP
+        public async Task<ActionResult> CreateChat()
         {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.GetUserAsync(User);
-                var userId = user.Id;
-                Contact contact = new Contact { SenderId = User.FindFirstValue(ClaimTypes.NameIdentifier), RecieverId = id };
-                _context.Add(contact);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-
-            }
-            return RedirectToAction("Index");
-        }*/
+            return View();
+        }
     }
 }

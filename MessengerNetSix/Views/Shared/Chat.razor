@@ -4,7 +4,7 @@
 @inject NavigationManager NavigationManager
 @implements IAsyncDisposable
 
-<PageTitle>@Reciever</PageTitle>
+<PageTitle>@Sender</PageTitle>
 
 <div class="form-group">
     <label>
@@ -24,20 +24,19 @@
 </ul>
 
 @code {
-    private readonly UserManager<User> _userManager;
-
     private HubConnection? hubConnection;
     private List<string> messages = new List<string>();
     private string? userInput;
     private string? messageInput;
 
     [Parameter]
-    public string Reciever { get; set; }
-    
+    public string Sender { get; set; }
+    [Parameter]
+    public string Connection { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        
+
 
         hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/messengerhub"))
@@ -51,13 +50,16 @@
         });
 
         await hubConnection.StartAsync();
+        await hubConnection.SendAsync("RegisterUser", Connection);
     }
 
     private async Task Send()
     {
         if (hubConnection is not null)
         {
-            await hubConnection.SendAsync("SendMessage", Reciever, messageInput);
+            //await hubConnection.SendAsync("SendMessage", Sender, messageInput);
+            await hubConnection.SendAsync("SendGroupMessage", Connection, Sender, messageInput);
+            //await hubConnection.SendAsync("SendMessageChat", Sender, Reciever, messageInput);
         }
     }
 

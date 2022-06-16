@@ -69,14 +69,14 @@
         }
         if(ok && user.UserName != User.Identity.Name)
         {
-            <tr>
+            <tr class="">
             <td>@user.Email</td>
             <td>@user.Phone</td>
             <td>
                 <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@user.Id" asp-route-name="@user.UserName">Удалить из контактов</a>
 
                 <a class="btn btn-sm btn-primary" asp-controller="Chat" asp-action="CreateDialogue" asp-route-id="@user.Id" asp-route-name="@user.UserName" >Перейти к чату</a>
-                <input type="button" class="btn btn-sm btn-primary" value="Перейти к чату" onclick="location.href='@Url.Action("CreateDialogue", "Chat")'" />
+                @*<input type="button" class="btn btn-sm btn-primary" value="Перейти к чату" onclick="location.href='@Url.Action("CreateDialogue", "Chat")'" />*@
             </td>
         </tr>
         }
@@ -88,7 +88,7 @@
         <input type="submit" value="Найти пользователя"/> 
     </div>
 </form>
-<table class="table">
+<table class="table table-curved">
     <h2>Пользователи</h2>
     <tr><th>Email</th><th>Год</th><th></th></tr>
     
@@ -116,3 +116,38 @@
     }
     
 </table>
+<style>
+    .table-curved {
+    border-collapse: separate;
+}
+.table-curved {
+    border: solid #ccc 1px;
+    border-radius: 6px;
+    border-left:0px;
+}
+.table-curved tr {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-radius: 26px;
+    border-collapse:seperate;
+    border-spacing:5em;
+}
+.table-curved th {
+    border-top: none;
+}
+.table-curved th:first-child {
+    border-radius: 6px 0 0 0;
+}
+.table-curved th:last-child {
+    border-radius: 0 6px 0 0;
+}
+.table-curved th:only-child{
+    border-radius: 6px 6px 0 0;
+}
+.table-curved tr:last-child td:first-child {
+    border-radius: 0 0 0 6px;
+}
+.table-curved tr:last-child td:last-child {
+    border-radius: 0 0 6px 0;
+}
+</style>

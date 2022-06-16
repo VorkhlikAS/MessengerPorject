@@ -1,11 +1,26 @@
 ﻿@using MessengerNetSix.Views.Shared
-@model IEnumerable<MessengerNetSix.Models.User>
+@model IEnumerable<MessengerNetSix.Models.ChatMember>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-<component type="typeof(Counter)" render-mode="ServerPrerendered" />
-@*<component type="typeof(Chat)" render-mode="ServerPrerendered" reciever="Bonga"/>*@
-@(await Html.RenderComponentAsync<Chat>(RenderMode.ServerPrerendered, new { Reciever=@User.Identity.Name}))
-@{
-}
+<table class="table">
+    <h2>Мои беседы</h2>
+    <tr><th>Название</th><th></th><th></th></tr>
+    
+    @foreach (var chat in Model)
+    {
+        
+            <tr>
+            <td><a class="btn btn-sm btn-primary" asp-action="Chat" asp-route-id="@chat.ChatId">@chat.ChatName</a></td>
+            <td>
+                
+                @*<a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@user.Id" asp-route-name="@user.UserName">Удалить из контактов</a>
+
+                <a class="btn btn-sm btn-primary" asp-controller="Chat" asp-action="CreateDialogue" asp-route-id="@user.Id" asp-route-name="@user.UserName" >Перейти к чату</a>
+                <input type="button" class="btn btn-sm btn-primary" value="Перейти к чату" onclick="location.href='@Url.Action("CreateDialogue", "Chat")'" />*@
+            </td>
+        </tr>
+        
+    }
+</table>

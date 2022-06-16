@@ -24,6 +24,7 @@ builder.Services.AddIdentity<User, IdentityRole>(opts => {
 }).AddEntityFrameworkStores<ApplicationContext>();
 
 builder.Services.AddTransient<IContacts, ContactsCollections>();
+builder.Services.AddTransient<IChatMember, ChatMemberCollections>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
 builder.Services.AddServerSideBlazor();
