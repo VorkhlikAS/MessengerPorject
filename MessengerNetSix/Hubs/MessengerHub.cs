@@ -1,4 +1,5 @@
 ﻿using MessengerNetSix.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
@@ -6,13 +7,21 @@ namespace MessengerNetSix.Hubs
 {
     public class MessengerHub : Hub
     {
+        private readonly ApplicationContext _context;
+
+        public MessengerHub(ApplicationContext context)
+        {
+            _context = context;
+        }
         public async Task RegisterUser(string groupName)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName.ToString());
         }
-        public async Task SendGroupMessage(string groupName, string Sender, string message)
+        public async Task SendGroupMessage(Message message)
         {
-            await Clients.Group(groupName.ToString()).SendAsync("ReceiveMessage", Sender ,message);
+            await Clients.Group(message.ChatId.ToString()).SendAsync("ReceiveMessage", message);
+            _context.Add(message);
+            _context.SaveChanges();
         }
 
 

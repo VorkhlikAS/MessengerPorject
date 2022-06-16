@@ -11,12 +11,15 @@ namespace MessengerNetSix.Controllers
         private readonly UserManager<User> _userManager;
         private readonly ApplicationContext _context;
         private readonly IChatMember _members;
+        private readonly IMessages _messages;
 
-        public ChatController(UserManager<User> userManager, ApplicationContext context, IChatMember members)
+
+        public ChatController(UserManager<User> userManager, ApplicationContext context, IChatMember members, IMessages messages)
         {
             _userManager = userManager;
             _context = context;
             _members = members;
+            _messages = messages;
         }
         public async Task<IActionResult> Index()
         {
@@ -28,12 +31,19 @@ namespace MessengerNetSix.Controllers
             var members = _members.GetMembers(id);
             var user = await _userManager.GetUserAsync(User);
             bool ok = false;
+            string name = "";
             foreach (var member in members)
                 if (member.UserId == user.Id.ToString())
+                {
+                    name = member.ChatName;
                     ok = true;
+                }
+                    
             if (ok)
             {
                 ViewBag.ChatId = id;
+                ViewBag.ChatName = name;
+                ViewBag.messages = _messages.GetChatMessages(id);
                 return View(members);
             }
             else return RedirectToAction("Error");

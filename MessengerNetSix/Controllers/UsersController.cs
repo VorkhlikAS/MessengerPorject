@@ -16,7 +16,7 @@ namespace MessengerNetSix.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index() => View(_userManager.Users.ToList());
+        public IActionResult Index() => View(_userManager.GetUserAsync(User));
 
         public IActionResult Create() => View();
 
@@ -93,9 +93,9 @@ namespace MessengerNetSix.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> ChangePassword(string id)
+        public async Task<IActionResult> ChangePassword()
         {
-            User user = await _userManager.FindByIdAsync(id);
+            User user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound();
