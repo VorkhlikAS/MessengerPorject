@@ -6,6 +6,22 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span style="white-space: pre-line">ESSA É A CAPIVARA DOS BRÓDI<br/>
+　　　　　/)─―ヘ
+　　　＿／　　　　＼
+　 ／　　　　●　　　●丶
+　｜　　　　　　　▼　| 
+　｜　　　　　　　亠ノ
+　 U￣U￣￣￣￣U￣
+                SE VOCÊ NÃO PASSAR PRA 5 BRÓDI VOCÊ NÃO É BRÓDI<br/></span>
+        }
+        else
+        {
+            <span>Join WEBBER now!!!</span>
+        }
+    </h1>
     @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
 </div>

@@ -68,6 +68,9 @@ namespace MessengerNetSix.Controllers
             contactItem.Forbiden = true;
             _context.Update(contactItem);
             await _context.SaveChangesAsync();
+            
+
+
             return RedirectToAction(nameof(Index));
         }
 

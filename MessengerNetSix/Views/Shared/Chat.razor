@@ -34,13 +34,12 @@
     
 </div>
 <hr>
-<div class="form-group">
-    <label>
-        Message:
-        <input @bind="messageInput" size="50" />
-    </label>
-</div>
-<button @onclick="Send" disabled="@(!IsConnected)">Send</button>
+<form @onsubmit="Send">
+    <div class="center">
+        <input type="text" @bind="messageInput" size="50"disabled="@(!IsConnected)" style="border-radius: 12px; width: 50%; background-color: #d3ceda;"/>
+        <input type="submit" value="Отправить сообщение" disabled="@(!IsConnected)" class="btn btn-secondary" style="border-radius: 12px;"/> 
+    </div>
+</form>
 @code {
     private HubConnection? hubConnection;
     //private List<string[]> messages = new List<string[]>();
@@ -83,6 +82,7 @@
         if (hubConnection is not null)
         {
             Message message = new Message { SenderId=Sender, Content=messageInput, ChatId = Connection, PostingDate=DateTime.Now};
+            messageInput= "";
             await hubConnection.SendAsync("SendGroupMessage", message);
         }
     }
@@ -101,6 +101,7 @@
 <style>
   table {
     display: block;
+    table-layout: fixed;
     margin: 0 auto; /* or margin: 0 auto 0 auto */
     width: 80%;
     max-height: 630px; 
@@ -132,7 +133,7 @@
 	border-radius: 0 0 12px 0;
 	margin-top: -20px;
 	position: relative;
-	left: calc(0.5vw - 450px);
+	left: calc(0.5vw - 455px);
     }
    .pointer-right {
     background-color: #dbdbe1;
@@ -143,7 +144,9 @@
 	border-radius: 0 0 12px 0;
 	margin-top: -20px;
 	position: relative;
-	left: calc(0.5vw + 425px);
+	left: calc(0.5vw + 405px);
     }
-    
+    .center {
+    text-align: center;
+}
 </style>

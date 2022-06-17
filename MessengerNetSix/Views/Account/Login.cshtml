@@ -1,20 +1,19 @@
 ﻿@model MessengerNetSix.ViewModels.LoginViewModel
  
-<h2>Вход в приложение</h2>
+<h2 style=" width: 50vw; margin-left : 0vw; text-align: center;" >Вход в приложение</h2>
 
 <div class = "col-md-4">
-<form method="post" asp-controller="Account" asp-action="Login"
+<form style=" width: 50vw; margin-left : 15vw; text-align: left;" method="post" asp-controller="Account" asp-action="Login"
       asp-route-returnUrl="@Model.ReturnUrl">
     <div asp-validation-summary="ModelOnly"></div>
-    <div class = "form-floating"> 
-                <input class = "form-control" asp-for="Email" />
-        <label class = "form-label" asp-for="Email"></label>
-
+    <div> 
+        <label asp-for="Email"></label><br />
+        <input asp-for="Email" style="width: 222px;" />
         <span asp-validation-for="Email"></span>
     </div>
     <div>
         <label asp-for="Password"></label><br />
-        <input asp-for="Password" />
+        <input asp-for="Password" style="width: 222px;" />
         <span asp-validation-for="Password"></span>
     </div>
     <div>
@@ -22,10 +21,10 @@
         <input asp-for="RememberMe" />
     </div>
     <div>
-        <input class="btn btn-primary mt-2" type="submit" value="Войти" />
+    <input style="width: 222px;"  class="btn btn-primary mt-2" type="submit" value="Войти" />
     </div>
     <div>
-        <a class="btn btn-secondary mt-2" asp-controller="Account" asp-action="Register">Регистрация</a>
+        <a style="width: 222px;"  class="btn btn-secondary mt-2" asp-controller="Account" asp-action="Register">Регистрация</a>
     </div>
 </form>
 </div>

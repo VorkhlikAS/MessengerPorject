@@ -1,28 +1,29 @@
 ﻿@model MessengerNetSix.ViewModels.RegisterViewModel
-<h2>Регистрация нового пользователя</h2>
-<form method="post" asp-controller="Account" asp-action="Register">
+<h2 style=" width: 50vw; margin-left : 0vw; text-align: center;" >Регистрация нового пользователя</h2>
+
+<form method="post" style=" width: 50vw; margin-left : 15vw; text-align: left;" asp-controller="Account" asp-action="Register">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
         <label asp-for="Email"></label><br />
-        <input asp-for="Email" />
+        <input asp-for="Email" style="width: 222px;"  />
         <span asp-validation-for="Email"></span>
     </div>
     <div>
         <label asp-for="Phone"></label><br />
-        <input asp-for="Phone" />
+        <input asp-for="Phone" style="width: 222px;"  />
         <span asp-validation-for="Phone"></span>
     </div>
     <div>
         <label asp-for="Password"></label><br />
-        <input asp-for="Password" />
+        <input asp-for="Password" style="width: 222px;" />
         <span asp-validation-for="Password"></span>
     </div>
     <div>
         <label asp-for="PasswordConfirm"></label><br />
-        <input asp-for="PasswordConfirm" />
+        <input asp-for="PasswordConfirm" style="width: 222px;" />
         <span asp-validation-for="PasswordConfirm"></span>
     </div>
-    <div>
-        <input type="submit" value="Регистрация" />
+  <div>
+        <br /> <input style="width: 222px;"  type="submit" value="Регистрация" />
     </div>
 </form>

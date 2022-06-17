@@ -4,16 +4,12 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 <a class="btn btn-sm btn-primary" asp-action="CreateChat">Создать новый чат</a>
-<form method="post" asp-controller="ContactsAndChats" asp-action="Index">
-    <div>
-        <label value="$Key"><</label>
-        <input type="text" name="name">
-        
+<form method="post" asp-controller="Chat" asp-action="Join">
+    <div class="mt-3 mb-3">
+        <label for="key"> $Key </label>
+        <input type="text" name="key">
+        <input type="submit" class="btn btn-outline-secondary" value="Присоединиться по ключу"/> 
     </div>
-    <div>
-        <input type="submit" class="btn btn-primary" value="Присоединиться по ключу"/> 
-    </div>
-    
 </form>
 <hr />
 <table class="table">
@@ -22,11 +18,20 @@
     
     @foreach (var chat in Model)
     {
-        
-            <tr>
-            <td><a class="btn btn-sm btn-primary" asp-action="Chat" asp-route-id="@chat.ChatId">@chat.ChatName</a></td>
+        bool ok = false;
+        @foreach(var group in ViewBag.Chats)
+        {
+            if (group.Id == chat.ChatId)
+            {
+                ok = true;
+            }
+        }
+        <tr>
+            <td><a class="btn btn-sm btn-light" asp-action="Chat" asp-route-id="@chat.ChatId">@chat.ChatName</a></td>
             <td>
-                
+                @if (ok){
+                       <a class="btn btn-sm btn-outline-danger" asp-action="Leave" asp-route-id="@chat.ChatId">Покинуть чат</a>
+                }
                 @*<a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@user.Id" asp-route-name="@user.UserName">Удалить из контактов</a>
 
                 <a class="btn btn-sm btn-primary" asp-controller="Chat" asp-action="CreateDialogue" asp-route-id="@user.Id" asp-route-name="@user.UserName" >Перейти к чату</a>

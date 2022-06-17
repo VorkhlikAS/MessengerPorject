@@ -20,7 +20,7 @@
 {
     <table class="table">
     <h2>Неподтвержденные контакты</h2>
-    <tr><th>Email</th><th>Год</th><th></th></tr>
+    <tr><th>Email</th><th>Год</th><th></th><th></th></tr>
     
     @foreach (var user in Model)
     {
@@ -36,6 +36,9 @@
                         <td>
                         <a class="btn btn-sm btn-primary" asp-action="Accept" asp-route-id="@user.Id">Принять заявку</a>
                         </td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@user.Id">Отменить заявку</a>
+                        </td>
                         </tr>
                     }
                     else if (contact.SenderId == userid && contact.RecieverId == user.Id)
@@ -46,6 +49,7 @@
                         <td>
                         <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@user.Id">Отменить заявку</a>
                         </td>
+                        <td></td>
                         </tr>
                     }
                 }

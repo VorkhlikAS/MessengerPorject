@@ -24,7 +24,22 @@ namespace MessengerNetSix.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
-            return View(_context.ChatMembers.Where(m => m.UserId == user.Id).ToList());
+            if (user != null)
+            {
+                var memberChats = _context.ChatMembers.Where(m => m.UserId == user.Id).ToList();
+                List<ChatList> chats = new List<ChatList>();
+                foreach(ChatMember chat in memberChats)
+                {
+                    var myChat = _context.ChatList.Where(p => p.IsAGroup && (p.Id == chat.ChatId)).FirstOrDefault();
+                    if (myChat != null)
+                        chats.Add(myChat);
+                }
+                ViewBag.Chats = chats;
+                return View(memberChats);
+            }
+            else 
+                return RedirectToAction("Error");
+            
         }
         public async Task<ActionResult> Chat(string id)
         {
@@ -57,9 +72,9 @@ namespace MessengerNetSix.Controllers
             {
                 var user = await _userManager.GetUserAsync(User);
                 string chatId = null;
-                if (_context.ChatMembers.Where(p => (p.ChatName == name)&&(p.UserId == user.Id)) == null)
+                if (_context.ChatMembers.Where(p => (p.ChatName == name)&&(p.UserId == user.Id)).Count() == 0)
                 {
-                    ChatList chatList = new ChatList { IsAGroup = false };
+                    ChatList chatList = new ChatList { IsAGroup = false, Key="", Name="" };
                     _context.Add(chatList);
                     await _context.SaveChangesAsync();
                     ChatMember firstMember = new ChatMember { UserId = user.Id, ChatName = name, ChatId = chatList.Id };
@@ -91,6 +106,38 @@ namespace MessengerNetSix.Controllers
             ChatMember chatMember = new ChatMember { ChatId = newChat.Id, ChatName=name, UserId = user.Id};
             _context.Add(chatMember);
             _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public async Task<ActionResult> Join(string key)
+        {
+            if (_context.ChatList.Where(p => p.Key == key).Count() > 0)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                var chat = _context.ChatList.Where(p => p.Key == key).FirstOrDefault();
+                if (_context.ChatMembers.Where(p => (p.ChatId == chat.Id)&&(p.UserId == user.Id)).Count() ==0)
+                {
+                    ChatMember newMember = new ChatMember { ChatId = chat.Id, UserId = user.Id, ChatName = chat.Name };
+                    _context.Add(newMember);
+                    _context.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Такого чата не существует");
+                return RedirectToAction("Index");
+            }
+        }
+        public async Task<ActionResult> Leave(string id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var chatMember = _context.ChatMembers.Where(p => (p.ChatId.ToString() == id)&&(p.UserId==user.Id)).FirstOrDefault();
+            if (chatMember != null)
+            {
+                _context.ChatMembers.Remove(chatMember);
+                _context.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
     }
